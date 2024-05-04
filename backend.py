@@ -1,51 +1,59 @@
 import bpy
-class SimpleOperator(bpy.types.Operator):
-    bl_idname = "object.simple_operator"
-    bl_label = "Tool Name"
+from bpy_extras.io_utils import ImportHelper
+from bpy.types import Operator
+
+class BrowseVideoFile(Operator, ImportHelper):
+    bl_idname = "object.browse_video_file"
+    bl_label = "Browse Video File"
+
+    filename_ext = ".mp4"
 
     def execute(self, context):
-        print("Hello World")
+        filepath = self.filepath
+        print("Selected video file:", filepath)
+        # You can perform further operations with the selected video file here
         return {'FINISHED'}
 
-bpy.utils.register_class(SimpleOperator)
-class BaseOperator:
+class SelectTemplateFile(Operator, ImportHelper):
+    bl_idname = "object.select_template_file"
+    bl_label = "Select Template File"
+
+    filename_ext = ".blend"
+
     def execute(self, context):
-        print("Hello World BaseClass")
+        filepath = self.filepath
+        print("Selected template file:", filepath)
+        # You can perform further operations with the selected template file here
         return {'FINISHED'}
 
-class SimpleOperator(bpy.types.Operator, BaseOperator):
-    bl_idname = "object.simple_operator"
-    bl_label = "Tool Name"
+# Define the panel for the user interface
+class PT_SimplePanel(bpy.types.Panel):
+    bl_label = "Simple Video Editor"
+    bl_idname = "PT_PT_SimplePanel"  # Add 'PT_PT_' prefix
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = 'Tool'
 
-bpy.utils.register_class(SimpleOperator)
-class SimpleOperator(bpy.types.Operator):
-    """ See example above """
+    def draw(self, context):
+        layout = self.layout
 
+        # Browse video file button
+        layout.operator("object.browse_video_file", text="Browse Video File")
+
+        # Select template file button
+        layout.operator("object.select_template_file", text="Select Template File")
+
+# Register the classes
 def register():
-    bpy.utils.register_class(SimpleOperator)
+    bpy.utils.register_class(BrowseVideoFile)
+    bpy.utils.register_class(SelectTemplateFile)
+    bpy.utils.register_class(PT_SimplePanel)
 
 def unregister():
-    bpy.utils.unregister_class(SimpleOperator)
+    bpy.utils.unregister_class(BrowseVideoFile)
+    bpy.utils.unregister_class(SelectTemplateFile)
+    bpy.utils.unregister_class(PT_SimplePanel)
 
 if __name__ == "__main__":
     register()
 
-
-class MyMaterialSubProps(bpy.types.PropertyGroup):
-    my_float: bpy.props.FloatProperty()
-
-class MyMaterialGroupProps(bpy.types.PropertyGroup):
-    sub_group: bpy.props.PointerProperty(type=MyMaterialSubProps)
-
-def register():
-    bpy.utils.register_class(MyMaterialSubProps)
-    bpy.utils.register_class(MyMaterialGroupProps)
-    bpy.types.Material.my_custom_props: bpy.props.PointerProperty(type=MyMaterialGroupProps)
-
-def unregister():
-    del bpy.types.Material.my_custom_props
-    bpy.utils.unregister_class(MyMaterialGroupProps)
-    bpy.utils.unregister_class(MyMaterialSubProps)
-
-if __name__ == "__main__":
-    register()
