@@ -1,247 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-   
-   *{
-      backdrop-filter: blur(20px);
-      
-   }
-   body {
-    margin: 0;
-    padding: 0;
-    background-image: url('https://images.pexels.com/photos/10252586/pexels-photo-10252586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); /* Direct link to the image file */
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif;
-    position: relative;
-    backdrop-filter: blur(0px);
-     /* Ensure proper stacking of elements */
-}
-#loginForm{
-   margin-top: 20%;
-}
-#loginForm button{
-    margin-top: 5px;
-}
-.image{
-   opacity: 10px;
-}
-.blur-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity here (0.5 for 50% opacity) */
-    backdrop-filter: blur(10px); /* Adjust blur intensity */
-}
-.container {
-    max-width: 400px;
-    height: 400px;
-    margin: 0 auto;
-    margin-top: 60px;
-    padding: 20px;
-    border: 1px solid #d9e7d6;
-    border-radius: 10px;
-    position: relative;
-    background-color:rgb(39 111 187); /* Ensure proper stacking */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('background.jpg'); /* Background image */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.blur-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px); /* Adjust blur intensity */
-    z-index: -1; /* Push the blur layer behind the content */
+.login-container {
+  background-color: rgba(128, 0, 128, 0.5); /* Purple color overlay */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
-     .form-group{
-      margin-bottom: -9px;
-    align-items: center;
-    margin-left: 109px;
-    margin-top: 50px;
-     }
-     .form-group label{
-      
-      display: block;
-        margin-bottom: 5px;
-        margin-left: 5%;
-        
-        color: #fff;
-        margin-top: -28px
-     }
-     label{
-        display: block;
-        margin-bottom: 5px;
-        margin-left: 50x;
-        color: greenyellow;
-     }
-     #password{
-      height: 25px;
-        border: 1px solid black;
-        border-radius:8px;
-        margin-bottom: 20px;
-     }
-     #username{
-      padding-top: 1px;
-        height: 25px;
-        border: 1px solid black;
-        border-radius:8px;
-        margin-top: 40px;
-        margin-bottom: -60px;
-        
-     }
-     input[type ="text"]
-     input[type = "password"]{
-        width: 100%;
-        
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        margin-left: 100%;
-        height: 10%;
-        padding: 8px;
-     }
-    .container h2{
-      align-items: center;
-      align-content: center;
-      margin-left: 38%;
-      margin-top: -1px;
-      color: #fff;
-     }
-     button{
-        width: 40%;
-        padding: 10px;
-        border: none;
-        border-radius: 3px;
-        border: 0.1px solid #d9e7d6;
-        background-color: #007bff;
-        color: #fff;
-        cursor: pointer;
-        align-items: center;
-        margin-left: 29%;
-        margin-top: 5%;
-        flex:content;
-        align-content: space-between;
-     }
-     .login-button:hover{
-        background-color: #0056b3;
-     }
-     .facebook-button{
-        background-color: #3b5998;
-        color: #fff;
-        margin-top: 4px;
-     }
-     .facebook-button:hover{
-        background-color: #2d4373;
-        
-     }
-     .gmail-button{
-        background-color: #dd4b39;
-        color: #fff;
-        margin-top: 4px;
-     }
-     .gmail-button:hover{
-        background-color: #c23321;
-     }
-     #username{
-      margin-top: 10px
-     }
-     
-     .header table{
-      width: 100%;
-      height: 40px;
-      color: black;
-      background-color: silver;
-      
-     }
-     .header table th:hover{
-      color: #c23321;
-      border-bottom: 3px solid black;
-      border-width: 0.1px ;
-      background-color:rgb(39 111 187);
-     }
-     
-    </style>
+h2 {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+  </style>
 </head>
 <body>
-   <div class="header">
-      <table>
-         <thead>
-           <tr>
-             <th>Home </th>
-             <th>About Us </th>
-             <th>Contact Us </th>
-             
-             <th>Sign up </th>
-             <th>Login </th>
-             
-           </tr>
-         </thead>
-       </table>
-   </div>
-    <div class="container">
-      <div class="header"></div>
-        <h2>Login</h2>
-        <form action="" id="loginForm">
-            <div class="form-group">
-                <label class="username" for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="login-button"> Login</button>
-            <button type="button" class="facebook-button" onclick="loginwithFacebook()">  Login with Facebook</button>
-            <button type="button" class="gmail-button" onclick="loginwithGmail()"> Login with Gmail</button>
-        </form>
-
-    </div>
-    <script src="script.js"></script>
-    <script>
-   function loginwithFacebook() {
-    // Redirect user to Facebook login page
-    window.location.href = 'https://www.facebook.com/login.php';
-}
-
-
-function loginwithGmail() {
-    
-    window.location.href = 'https://accounts.google.com/login';
-}
-
-
-function saveUserAccount(username, password) {
-    
-    if (typeof(Storage) !== "undefined") {
-        
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-        console.log("User account saved successfully!");
-    } else {
-        console.log("Sorry, your browser does not support local storage.");
-    }
-}
-
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-
-    console.log("Username: " + username);
-    console.log("Password: " + password);
-
-    
-    saveUserAccount(username, password);
-});
-</script>
+  <div class="overlay"></div>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </body>
 </html>
